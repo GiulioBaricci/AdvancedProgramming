@@ -1,4 +1,4 @@
-from StabelMarriageProblem import *
+from StableMarriageProblem import *
 
 if __name__ == "__main__":
     men = {
