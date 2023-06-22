@@ -6,21 +6,21 @@ def read_words(fileName):
 
 
 def wordle(startWord, wordle, dictionary):
-    guesses = []                                # Lista di tentativi
-    correctCorrect = {}                         # Dictionary delle lettere corrette e alla posizione corretta
-    correctWrong = {}                           # Dictionary delle lettere corrette ma alla posizione sbagliata
-    wrong = []                                  # Dictionary delle lettere sbagliate
-    wordleList = [c for c in wordle]            # Lista delle lettere del wordle
+    guesses = []
+    correctCorrect = {}
+    correctWrong = {}
+    wrong = []
+    wordleList = [c for c in wordle]            
     def guess(currentWord):
-        if currentWord == wordle:               # Se la parola è corretta
-            guesses.append("\u001b[32;1m" + currentWord + "\u001b[0m")      # Colora la parola di verde
-            return guesses                      # Ritorna i tentativi
+        if currentWord == wordle:
+            guesses.append("\u001b[32;1m" + currentWord + "\u001b[0m")
+            return guesses
         else:
-            currentList = [c for c in currentWord]      # Lista delle lettere della parola corrente
-            for ind in range(len(currentList)):         # Scorre per ogni carattere della parola
-                if currentList[ind] == wordleList[ind]:                         # Se il carattere è corretto
-                    if ind not in correctCorrect:                               # Se il carattere non è nel dictionary delle lettere corrette e alla posizione corretta
-                        correctCorrect[ind] = currentList[ind]                  # Lo aggiunge con l'indice come chiave 
+            currentList = [c for c in currentWord]
+            for ind in range(len(currentList)):
+                if currentList[ind] == wordleList[ind]:
+                    if ind not in correctCorrect:
+                        correctCorrect[ind] = currentList[ind]
                     currentList[ind] = "\u001b[32;1m" + currentList[ind]
                 elif wordleList.__contains__(currentList[ind]):
                     if ind not in correctCorrect:
