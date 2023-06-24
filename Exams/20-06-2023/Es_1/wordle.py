@@ -10,7 +10,8 @@ def wordle(startWord, wordle, dictionary):
     correctCorrect = {}
     correctWrong = {}
     wrong = []
-    wordleList = [c for c in wordle]            
+    wordleList = [c for c in wordle]
+    dictionaryCopy = dictionary.copy()
     def guess(currentWord):
         if currentWord == wordle:
             guesses.append("\u001b[32;1m" + currentWord + "\u001b[0m")
@@ -32,9 +33,9 @@ def wordle(startWord, wordle, dictionary):
                     currentList[ind] = "\u001b[37;1m" + currentList[ind]
                 currentList[ind] = currentList[ind] + "\u001b[0m"
 
-            dictionary.remove(currentWord)
+            dictionaryCopy.remove(currentWord)
 
-            currentWord = [word for word in dictionary if (not any(x in [c for c in word] for x in wrong)) and \
+            currentWord = [word for word in dictionaryCopy if (not any(x in [c for c in word] for x in wrong)) and \
                            (all([c for c in word][ind] == char for ind, char in correctCorrect.items())) and \
                             (all([c for c in word].__contains__(char) and [c for c in word][ind] != char for ind, char in correctWrong.items()))][0]
             
